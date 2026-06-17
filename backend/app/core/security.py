@@ -2,7 +2,7 @@
 JWT Authentication & Password Hashing Utilities.
 
 Provides:
-- Password hashing with bcrypt
+- Password hashing with Argon2 (winner of the Password Hashing Competition)
 - JWT token creation and verification
 - FastAPI dependency for getting the current authenticated user
 """
@@ -24,8 +24,8 @@ from app.schemas.auth import TokenData
 
 
 # ── Password Hashing ──────────────────────────────────────────────────────────
-# bcrypt is the industry standard for password hashing
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# Argon2 is the Password Hashing Competition winner — resistant to GPU attacks
+pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 
 
 def hash_password(plain_password: str) -> str:
